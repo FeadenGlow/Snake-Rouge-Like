@@ -1,0 +1,177 @@
+* {
+    user-select: none;
+    box-sizing: border-box;
+    font-size: 20px;
+    color:white;
+    font-family: 'Trajan Pro Regular';
+}
+
+body {
+    margin: 100px;
+    background-color: black;
+}
+
+.field {
+    height: 640px;
+    width: 1160px;
+
+    top: 75px;
+    left: 45px;
+
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.particle-field{
+
+    top: 0;
+    left: 0;
+    /*top: 175px;
+    left: 385px;*/
+
+    position: absolute;
+}
+.message-field{
+    height: 100px;
+    width: 400px;
+    position: absolute;
+    top:17%;
+    left: 41%;
+    
+    display: flex;
+
+    background-color:rgba(39, 39, 39, 0.494);
+
+    border-radius: 5%;
+}
+.message-text{
+    margin: auto;
+    height: auto;
+    width: 340px;
+
+    font-size: 20px;
+}
+
+.excel {
+    height: 40px;
+    width: 40px;
+
+    padding: 5px;
+}
+
+.snakeBody {
+    background-size: cover;
+    rotate: +90deg;
+    border-radius: 50%;
+}
+
+.map-stats{
+    color:white;
+    position: absolute;
+    font-family: 'Trajan Pro Regular';
+    left: 1350px;
+    top: 75px;
+    
+}
+
+.snakeHead{
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    rotate: +90deg;
+    border-radius: 10%;
+}
+
+.fruit{
+    background-size: cover;
+    border-radius: 50%;
+}
+.enemy-img{
+    width: 60px;
+    height: 50px;
+}
+.climber-img{
+    width: 60px;
+    height: 40px;
+}
+.img {
+    width: 40px;
+    height: 40px;
+}
+.shoot-img {
+    width: 30px;
+    height: 30px;
+}
+.fruit-img{
+    width: 30px;
+    height: 30px;
+    rotate: 0deg;
+}
+.gmi {
+    width: 40px;
+    height: 35px;
+}
+.mgi{
+    height: 850px;
+    width: 1335px;
+    top: 50px;
+    left: 300px;
+
+    margin: 0 auto;
+    
+    position: absolute;
+    flex-wrap: wrap;
+}
+
+.stats{
+    position: absolute;
+}
+@font-face{
+    font-family: 'Trajan Pro Regular';
+    src: url(fonts/Trajan\ Pro\ Regular.ttf);
+}
+
+.skill-field{
+    width: 200px;
+    height: 225px;
+    position: absolute;
+    top: 250px;
+    display: block;
+}
+.skill-image{
+    width: 150px;
+    height: auto;
+    margin: auto;
+}
+.skill-button{
+    width: 175px;
+    height: 30px;
+    margin: auto;
+    background-color: rgba(49, 49, 49, 0.494);
+    border-radius: 5%;
+
+    display: flex;
+}
+.skill-text{
+    width: 100px;
+    height: 20px;
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+}
+
+.blast-image{
+    width: 60px;
+    height: 40px;
+}
+.walker-img{
+    width: 50px;
+    height: 50px;
+}
+.portal-image{
+    width: 50px;
+    height: 50px;
+}

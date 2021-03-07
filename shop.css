@@ -1,0 +1,206 @@
+*{
+    user-select: none;
+}
+
+.shop-text, .skills-text, .inventory-text{
+    cursor: pointer;
+    width: 100px;
+}
+.shop-text:hover, .skills-text:hover, .inventory-text:hover{
+    animation-duration: 2ms;
+    color: rgba(192, 192, 192, 0.803);
+}
+.stats-shop{
+    position:absolute;
+}
+.skills, .shop, .inventory{
+    position: absolute;
+    left: 250px;
+    top: 100px;
+
+    height: 700px;
+    width: 1200px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    border-radius: 2%;
+    background-color: rgb(14, 14, 14);
+}
+.inventory-side-1, .skills-side-1{
+    position: absolute;
+
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    height: 700px;
+    width: 600px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.inventory-side-2, .skills-side-2{
+    position: absolute;
+
+    height: 700px;
+    width: 600px;
+    left: 600px;
+
+    
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+.inventory-side-2, .skills-side-1{
+    display: block;
+}
+.skills-side-2{
+    display: block;
+}
+.skills-excel-cell{
+    width: 200px;
+    height: 173px;
+}
+.skills-excel{
+    width: 200px;
+    height: 200px;
+
+    border-radius: 10%;
+}
+.skills-excel:hover{
+    background-color: rgba(150, 150, 150, 0.446);
+}
+.skills-text-cell{
+    margin: auto;
+    text-align: center;
+    font-size: 20px;
+    width: 110px;
+    height: 20px;
+}
+.skills-image{
+    cursor: pointer;
+    width: 200px;
+    height: auto;
+}
+.artifact-image{
+    width: 110px;
+    height: 110px;
+}
+.skill-image-description{
+    width: 200px;
+    height: auto;
+}
+.artifact-image-description, .skill-image-description{
+
+    width: 150px;
+    height: 150px;
+    margin: 30px;
+    margin-bottom: 0px;
+    margin-left: 225px;
+    margin-right: 225px;
+}
+.skill-image-description{
+    width: 250px;
+    height: auto;
+    margin-left: 175px;
+    margin-right: 175px;
+}
+.artifact-name,.skill-name{
+
+    text-align: center;
+    font-size: 20px;
+    height: 20px;
+    width: 150px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.artifact-description, .skill-description{
+    text-align: center;
+    font-size: 11px;
+    height: 16px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.artifact-stats-description, .skill-stats-description{
+    text-align: center;
+    font-size: 11px;
+    height: 16px;
+    width: 575px;
+    margin-top: 70px;
+    background-color: rgb(14, 14, 14);
+    border-spacing: 7px 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.artifact-stats-description td, .skill-stats-description td{
+    background-color: rgba(33, 33, 33, 0.494);
+    margin-left: 10px;
+    width: 100px;
+    font-size: 10px;
+    border: none;
+}
+.artifact-headings td, .skill-headings td{
+    width: 165px;
+    font-size: 15px;
+    border: none;
+    
+}
+.mana{
+    top: 700px;
+    left: 600px
+}
+.lvl{
+    top: 700px;
+    left: 800px
+}
+.coins{
+    top: 700px;
+    left: 400px
+}
+.skills-list{
+    font-size: 14px;
+    margin: 10px;
+    list-style: none;
+    cursor: pointer;
+}
+.inventory-excel{
+    height: 160px;
+    width: 150px;
+
+    border-radius: 10%;
+}
+.inventory-excel:hover{
+    background-color: rgba(150, 150, 150, 0.446);
+}
+.inventory-excel-cell{
+    height: 110px;
+    width: 110px;
+    margin: 20px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    cursor: pointer;
+
+    border-radius: 10%;
+    background-color:  rgba(49, 49, 49, 0.494);
+}
+.inventory-text-cell{
+    font-size: 9px;
+    width: 110px;
+    height: 20px;
+    margin: 5px;
+    margin-left: 27px;
+    margin-right: 13px;
+}
+.skills-list::before{
+    cursor: pointer;
+    content: '';
+    background-repeat: no-repeat;
+    background-size: 14px;
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    background-image: url('/images/Stats-Plus.png');
+}

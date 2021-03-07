@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Snake Rouge-Like Game Online 3D Full HD 60 fps</title>
+
+    <script type="text/javascript"> 
+        function preventBack() { 
+            window.history.forward();  
+        } 
+          
+        setTimeout("preventBack()", 0); 
+          
+        window.onunload = function () { null }; 
+    </script> 
+</head>
+<body>
+    <div class = 'stats'>
+        <div class ='mana'><p class = 'mana-text'>Mana: 0/10</p></div>
+        <div class ='lvl'><p class = 'lvl-text'>Lvl: 0</p></div>
+        <div class ='coins'><p class = 'coins-text'>Coins: 0</p></div>
+    </div>
+    <div class = 'map-stats'>
+        <div class = 'enemies'><p class = 'enemies-text'>Enemies left: 0</p></div>
+    </div>
+    <img src = "/images/snakeBackground.png" class = "mgi">
+    <canvas class = 'particle-field' height = '815px', width = '1545px'></canvas>
+
+    <script src = "/js/index.js"></script>
+    <script src="/js/climber.js"></script>
+    <script src="/js/enemy.js"></script>
+    <script src = "/js/movement.js"></script>
+    <script src="/js/skill.js"></script>
+    <script src="/js/walker.js"></script>
+    <script src="/js/clear.js"></script>
+    <script src="/js/ending.js"></script>
+    <script src="/js/level.js"></script>
+</body>
+</html>
