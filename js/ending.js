@@ -15,6 +15,8 @@ function ending(){
         portal = document.querySelector('[posX = "'+portalcoords[0]+'"][posY = "'+portalcoords[1]+'"]'); 
         portal.classList.add('portal');
         portal.innerHTML = '<img src = "/images/portal.gif" class = "portal-image">';
+        window.localStorage.setItem('player-info', JSON.stringify(snake));
+        
     } 
 
     createPortal();

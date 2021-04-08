@@ -78,8 +78,10 @@ function removeHealth(){
         clearInterval(interval);
         createMessage('Game Over');
         clearEnemies();
+        restartSnake();
         return;
     }
+    snake.hp--;
     snakeBody[snakeBody.length-1].innerHTML = ''
     snakeBody.pop();
 
@@ -88,6 +90,9 @@ function removeHealth(){
         switcher = false;
     },1000)
 }
+
+let steps = false;
+
 function move(){
     manaScore1.innerHTML = "Mana: " + snake.mana + "/"+snake.maxMana;
     if(enemyArtifact.kills < enemyArtifact.neededKills){
@@ -155,23 +160,32 @@ function move(){
     enemiesScore.innerHTML = "Enemies left: "+floor.enemies;
 
     killcheck(snakeBody[0]);
+
+    steps = true;
 // 
 
 }
-
-let interval = setInterval(move, 200);
+let speed = snake.speed+snake.speedmultiplier;
+console.log(speed);
+let interval = setInterval(move, speed);
 
 window.addEventListener('keydown', function(e){
-    if(e.keyCode == 37 && direction!='right'){
-        direction = 'left';
-    }
-    else if(e.keyCode == 38 && direction!='down'){
-        direction = 'up';
-    }
-    else if(e.keyCode == 39 && direction!='left'){
-        direction = 'right'
-    }
-    else if(e.keyCode == 40 && direction!='up'){
-        direction = 'down';
+    if(steps == true){
+        if(e.keyCode == 37 && direction!='right'){
+            direction = 'left';
+            steps = false;
+        }
+        else if(e.keyCode == 38 && direction!='down'){
+            direction = 'up';
+            steps = false;
+        }
+        else if(e.keyCode == 39 && direction!='left'){
+            direction = 'right'
+            steps = false;
+        }
+        else if(e.keyCode == 40 && direction!='up'){
+            direction = 'down';
+            steps = false;
+        }
     }
 });

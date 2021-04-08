@@ -34,10 +34,21 @@ window.localStorage.setItem('selected-skill', JSON.stringify(selectedSkill));
 let floor = {
     enemies: 10,
 }
+let snake = JSON.parse(window.localStorage.getItem('player-info'));
+if(snake == null){
+    snake = {
 
-let snake = {
     mana: 0,
     maxMana: 10,
+    maxManamultiplier: 0,
+
+    hp: 3,
+
+    coinschecker: false,
+    coinsmultiplier: 0,
+    
+    speed: 200,
+    speedmultiplier: 0,
 
     lvl: 0,
     lvlNum: 0,
@@ -46,7 +57,9 @@ let snake = {
     skillpoints:0,
 
     coins: 0,
+    }
 }
+snake.maxMana += maxManamultiplier;
 
 document.body.appendChild(field);
 field.classList.add('field');
@@ -96,6 +109,11 @@ let coordinates = generateSnake();
 let snakeBody = [document.querySelector('[posX = "' + coordinates[0] + '"][posY = "' + coordinates[1] + '"]'),
                  document.querySelector('[posX = "' + (coordinates[0]-1) + '"][posY = "' + coordinates[1]),
                  document.querySelector('[posX = "' + (coordinates[0]-2) + '"][posY = "' + coordinates[1])];
+if(snake.hp < 3){
+    for(let i = 0; i < 3 - snake.hp; i++){
+        snakeBody.pop();
+    }
+}
 for(let i = 0; i < snakeBody.length; i++){
     snakeBody[i].classList.add('snakeBody');
     snakeBody[i].innerHTML = '<img src = "/images/snakeBody.png" class = "gmi">'//
@@ -138,10 +156,7 @@ function checker(element){
 }
 
 function killcheck(element){
-    let manaScore = document.querySelector('.mana-text');
-    let lvlScore = document.querySelector('.lvl-text');
-    let coinsScore = document.querySelector('.coins-text');
-    
+
     let enemiesScore = document.querySelector('.enemies-text');
     enemiesScore.innerHTML = "Enemies left: "+floor.enemies;
 
@@ -162,33 +177,8 @@ function killcheck(element){
             inventoryExchange[counter].manaCost = '10 for each taken damage';
             window.localStorage.setItem('player-inventory', JSON.stringify(inventoryExchange));
         }
-    
-        floor.enemies--;
-        let lvlScore1 = document.querySelector('.lvl-text');
-        let coinsScore1 = document.querySelector('.coins-text');
-        
-        let enemiesScore1 = document.querySelector('.enemies-text');
-        enemiesScore1.innerHTML = "Enemies left: "+floor.enemies;
 
-
-        let coinsChance = Math.round(Math.random()*(2-1)+1);
-        if(coinsChance == 1){
-            snake.coins+=0.25
-            coinsScore1.innerHTML = "Coins: "+snake.coins;
-        }
-
-        if(snake.mana>=snake.maxMana){
-            snake.mana--;
-        }
-        snake.lvlNum+=Math.round(Math.random()*(1 - 0.5) + 0.5);
-        if(snake.lvlNum >= snake.maxLvlScore){
-            snake.lvl++;
-            snake.skillpoints++;
-            snake.maxLvlScore*=2.5;
-            lvlScore1.innerHTML = "Lvl: "+snake.lvl;
-        }
-        snake.mana++;
-
+        getReward(0.25, 1);
 
         if(floor.enemies <= 0){
             ending();
@@ -198,29 +188,9 @@ function killcheck(element){
         enemy.pop(new Enemy);
     }
     else if(element.classList.contains('fruit')){
-        floor.enemies--;
-        element.classList.remove('fruit');
 
-        let coinsChance = Math.round(Math.random()*(2-1)+1);
-        if(coinsChance == 1){
-            snake.coins+=0.25
-            coinsScore.innerHTML = "Coins: "+snake.coins;
-        }
-
-        if(snake.mana>=snake.maxMana){
-            snake.mana--;
-        }
-        snake.lvlNum+=Math.round(Math.random()*(1 - 0.5) + 0.5);
-        if(snake.lvlNum >= snake.maxLvlScore){
-            snake.lvl++;
-            snake.skillpoints++;
-            snake.maxLvlScore*=2.5;
-            lvlScore.innerHTML = "Lvl: "+snake.lvl;
-        }
-        snake.mana++;
-        manaScore.innerHTML = "Mana: " + snake.mana + "/"+snake.maxMana;
-
-
+        getReward(0.25, 1);
+        
         if(floor.enemies <= 0){
             ending();
             return;
@@ -231,72 +201,32 @@ function killcheck(element){
 }
 
 function blastkillcheck(element){
-    let manaScore = document.querySelector('.mana-text');
-    let lvlScore = document.querySelector('.lvl-text');
-    let coinsScore = document.querySelector('.coins-text');
     
     let enemiesScore = document.querySelector('.enemies-text');
     enemiesScore.innerHTML = "Enemies left: "+floor.enemies;
 
     if(element.classList.contains('walker')){
-        floor.enemies--;
+
         element.classList.remove('walker');
 
-        let coinsChance = Math.round(Math.random()*(2-1)+1);
-        if(coinsChance == 1){
-            snake.coins+=0.25
-            coinsScore.innerHTML = "Coins: "+snake.coins;
-        }
-
-        if(snake.mana>=snake.maxMana){
-            snake.mana--;
-        }
-        snake.lvlNum+=Math.round(Math.random()*(1 - 0.5) + 0.5);
-        if(snake.lvlNum >= snake.maxLvlScore){
-            snake.lvl++;
-            snake.skillpoints++;
-            snake.maxLvlScore*=2.5;
-            lvlScore.innerHTML = "Lvl: "+snake.lvl;
-        }
-        snake.mana++;
-        manaScore.innerHTML = "Mana: " + snake.mana + "/"+snake.maxMana;
-
+        getReward(0.25, 1);
 
         if(floor.enemies <= 0){
             ending();
             return;
         }
-        floor.enemies--;
     }
     if(element.classList.contains('climber')){
-        floor.enemies--;
         element.classList.remove('climber');
 
-        let coinsChance = Math.round(Math.random()*(2-1)+1);
-        if(coinsChance == 1){
-            snake.coins+=0.25
-            coinsScore.innerHTML = "Coins: "+snake.coins;
-        }
-
-        if(snake.mana>=snake.maxMana){
-            snake.mana--;
-        }
-        snake.lvlNum+=Math.round(Math.random()*(1 - 0.5) + 0.5);
-        if(snake.lvlNum >= snake.maxLvlScore){
-            snake.lvl++;
-            snake.skillpoints++;
-            snake.maxLvlScore*=2.5;
-            lvlScore.innerHTML = "Lvl: "+snake.lvl;
-        }
-        snake.mana++;
-        manaScore.innerHTML = "Mana: " + snake.mana + "/"+snake.maxMana;
+        getReward(0.25, 1);
 
 
         if(floor.enemies <= 0){
             ending();
             return;
         }
-        floor.enemies--;
+
         climber.pop(new Climber);
 
     }

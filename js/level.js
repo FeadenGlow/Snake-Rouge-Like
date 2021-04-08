@@ -1,7 +1,19 @@
-let climberChance = Math.round(Math.random() * (3 - 1) + 1);
-let enemyChance = Math.round(Math.random() * (3 - 1) + 1);
-let walkerChance = walkerPosY = Math.round(Math.random() * (5 - 1) + 1);
+let lvlinfo = JSON.parse(window.localStorage.getItem('level-description'));
 
+let climberChance;
+let enemyChance;
+let walkerChance;
+
+if(lvlinfo == null){
+    climberChance = 1;
+    enemyChance = 1;
+    walkerChance = 1;
+}
+else{
+    climberChance = lvlinfo.climberChance;
+    enemyChance = lvlinfo.enemyChance;
+    walkerChance = lvlinfo.walkerChance;
+}
 let walker = [];
 let enemy = [];
 let climber = [];

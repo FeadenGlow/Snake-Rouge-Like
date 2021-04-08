@@ -52,6 +52,14 @@
     flex-wrap: wrap;
 
 }
+.inventory-side-2{
+    background-color: rgba(33, 33, 33, 0.494);
+    border-radius: 3%;
+}
+.skills-side-1{
+    background: rgba(33, 33, 33, 0.494);
+    border-radius: 3%;
+}
 .inventory-side-2, .skills-side-1{
     display: block;
 }
@@ -130,7 +138,7 @@
     height: 16px;
     width: 575px;
     margin-top: 70px;
-    background-color: rgb(14, 14, 14);
+    background-color: rgba(33, 33, 33, 0.494);
     border-spacing: 7px 0px;
     margin-left: auto;
     margin-right: auto;
@@ -203,4 +211,202 @@
     height: 14px;
     width: 14px;
     background-image: url('/images/Stats-Plus.png');
+}
+.map-field{
+    position: absolute;
+    left: 1475px;
+    top: 100px;
+
+    height: 700px;
+    width: 350px;
+
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    border-radius: 2%;
+    background-color: rgba(14, 14, 14);
+}
+.map-excell{
+    height: 50px;
+    width: 50px;
+    border-radius: 5%;
+    margin: auto;
+
+    background-color: rgb(170, 170, 170);
+}
+.map-excell:hover{
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+}
+.player-position{
+    height: 50px;
+    width: 50px;
+    border-radius: 5%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    background-color: rgba(168, 252, 44, 0.8);
+}
+.layer{
+    width: 100px;
+    margin: auto;
+}
+.map-description{
+    position: absolute;
+    left: 0px;
+    top:600px;
+    text-align: center;
+    align-items: center;
+
+    width: 350px;
+    height: 100px;
+    margin: auto;
+    border-radius: 7%;
+
+}
+.map-heading{
+    font-size: 16px;
+}
+.map-description-text{
+    font-size: 10px;
+}
+.map-description-selected{
+    background-color: rgba(33, 33, 33, 0.494);
+}
+.map-selected{
+    background-color: rgba(168, 252, 44, 0.8);
+}
+.continue{
+    position: absolute;
+    top: 900px;
+    left: 1600px;
+}
+.continue:hover{
+    color: rgba(192, 192, 192, 0.803);
+    cursor: pointer;
+}
+
+.shop-coins, .shop-mana, .shop-hp{
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    height: 20px;
+}
+.shop-coins{
+    top: 30px;
+    left: 100px;
+}
+.shop-mana{
+    top: 30px;
+    left: 550px;
+}
+.shop-hp{
+    top: 30px;
+    left: 1000px;
+}
+#splide01{
+    visibility: hidden;
+}
+
+.slider{
+    position: absolute;
+    top: 125px;
+    left: 50px;
+    height: 250px;
+}
+.splide__slide{
+    align-items: center;
+    justify-content: center;
+}
+.slide__text{
+    font-size: 16px;
+    position: absolute;
+    height: 20px;
+    width: auto;
+    text-align: center;
+    top: 0;
+    left: auto;
+    right: auto;
+}
+
+.splide__slide{
+    width: 250px;
+    height: 100px;
+    background-color: rgba(33, 33, 33, 0.494);
+    margin: auto;
+    display: flex;
+    border-radius: 10%;
+}
+
+.active-potions{
+    position: absolute;
+    top: 440px;
+    left: 350px;
+    width: 550px;
+    height: 250px;
+}
+
+.active-potions-slots{
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    background-color: rgba(33, 33, 33, 0.494);
+    border-radius: 10%;
+}
+.active-potions-slot2{
+    left: 260px;
+}
+
+.slide__image{
+    position: relative;
+    cursor: pointer;
+    height: 200px;
+    top:10px;
+    width: 200px;
+}
+
+.slide__cost{
+    font-size: 13px;
+    position: absolute;
+    top: 220px;
+    left: auto;
+    right: auto;
+}
+
+.potion-description{
+    z-index: 1;
+    position: absolute;
+    height: auto;
+    width: auto;
+    display: flex;
+    border-radius: 10%;
+    background-color: rgba(33, 33, 33, 0.494);
+}
+.potion-description__text{
+    font-size: 15px;
+}
+
+.active-potion{
+    height: 250;
+    width: 250;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.active-potion__image{
+    position: relative;
+    height: 200px;
+    margin: auto;
+    top:10px;
+    width: 200px;
+}
+.active-potion__text{
+    font-size: 16px;
+    position: absolute;
+    top: 200px;
+    left: auto;
+    right: auto;
 }

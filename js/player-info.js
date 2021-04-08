@@ -1,7 +1,6 @@
 let snake = JSON.parse(window.localStorage.getItem('player-info'));
 let inventoryExchange = JSON.parse(window.localStorage.getItem('player-inventory'));
 let skillsExchange = JSON.parse(window.localStorage.getItem('player-skills'));
-let stats = document.querySelector('.stats');
 
 let shopButton = document.querySelector('.shop-text');
 let skillsButton = document.querySelector('.skills-text');
@@ -17,6 +16,10 @@ let skillsSide1 = document.querySelector('.skills-side-1');
 let skillsSide2 = document.querySelector('.skills-side-2');
 
 let counterInv = 0;
+
+snake.speedmultiplier = 0;
+snake.coinsmultiplier = 0;
+snake.maxManamultiplier = 0;
 
 // function preventBack() { window.history.forward(); }  
 // setTimeout("preventBack()", 0);  
@@ -193,26 +196,52 @@ if(inventoryExchange != null){
     }
 }
 
-stats.innerHTML = `<p class="stats-shop coins">Coins: ${snake.coins}</p>`+
-                    `<p class="stats-shop mana">Mana: ${snake.mana}/${snake.maxMana}</p>`+
-                    `<p class="stats-shop lvl">Lvl: ${snake.lvl}</p>`;
-                    `<p class="stats-shop skillpoints">Skill Points: ${snake.skillpoints}</p>`;
+let shopCoins = document.createElement('p');
+let shopMana = document.createElement('p');
+let shopHp = document.createElement('p');
+let slidervis = document.createElement('div');
+let activepotions = document.createElement('div');
+
+shopCoins.classList.add('shop-coins');
+shopMana.classList.add('shop-mana');
+shopHp.classList.add('shop-hp');
+slidervis.classList.add('slider');
+slidervis.classList.add('splide');
+activepotions.classList.add('active-potions');
+
+
+shop.appendChild(shopCoins);
+shop.appendChild(shopMana);
+shop.appendChild(shopHp);
+shop.appendChild(slidervis);
+shop.appendChild(activepotions);
+
+shopCoins.innerHTML = `Coins: ${snake.coins}`;
+shopMana.innerHTML = `Mana: ${snake.mana}`;
+shopHp.innerHTML = `HP: ${snake.hp}`;
+
 
 shopButton.addEventListener('click', function(){
     skills.style.visibility = 'hidden';
     shop.style.visibility = 'visible';
+    let slider = document.getElementById('splide01');
+    slider.style.visibility = 'visible';
     inventory.style.visibility = 'hidden';
 
 });
 skillsButton.addEventListener('click', function(){
     skills.style.visibility = 'visible';
     shop.style.visibility = 'hidden';
+    let slider = document.getElementById('splide01');
+    slider.style.visibility = 'hidden';
     inventory.style.visibility = 'hidden';
 
 });
 inventoryButton.addEventListener('click', function(){
     skills.style.visibility = 'hidden';
     shop.style.visibility = 'hidden';
+    let slider = document.getElementById('splide01');
+    slider.style.visibility = 'hidden';
     inventory.style.visibility = 'visible';
 
 });
