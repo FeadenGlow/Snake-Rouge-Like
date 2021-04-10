@@ -2,7 +2,10 @@ let lvl1 = document.querySelector('.map-excell1');
 let lvl2 = document.querySelector('.map-excell2');
 let lvl3 = document.querySelector('.map-excell3');
 let lvl4 = document.querySelector('.map-excell4');
-
+let bossCounter = JSON.parse(window.localStorage.getItem('boss-counter'));
+if(bossCounter == null){
+    bossCounter = 0;
+}
 let lvls = [lvl1, lvl2, lvl3, lvl4];
 let params = [];
 let mapDeskField = document.querySelector('.map-description');
@@ -15,7 +18,15 @@ function setParameters(){
         let enemyChance;
         let walkerChance;
 
+        let bossChanceNumber = 16 - bossCounter;
+
+        let bossChance = Math.round(Math.random() * (bossChanceNumber - 0) + 0);
+
         difficulty = Math.round(Math.random() * (3 - 1) + 1);
+
+        if(bossChance == bossChanceNumber){
+            difficulty = 4;
+        }
 
         switch(difficulty){
             case 1:
@@ -36,6 +47,11 @@ function setParameters(){
                 walkerChance = Math.round(Math.random() * (4 - 3) + 3);
                 enemyChance = Math.round(Math.random() * (3 - 2) + 2);
             break;
+            case 4:
+                difficulty = 'boss';
+                climberChance = Math.round(Math.random() * (0 - 0) + 0);
+                walkerChance = Math.round(Math.random() * (0 - 0) + 0);
+                enemyChance = Math.round(Math.random() * (0 - 0) + 0);
         }
 
         let setting = {
@@ -50,6 +66,10 @@ function setParameters(){
 setParameters();
 
 for(let i = 0; i < lvls.length; i++){
+    if(params[i].difficulty == 'boss'){
+        lvls[i].classList.remove('map-excell');
+        lvls[i].classList.add('map-boss-excell');
+    }
     lvls[i].addEventListener('click', function(e){
         for(let j = 0; j < lvls.length; j++){
             lvls[j].classList.remove('map-selected');
@@ -69,8 +89,10 @@ for(let i = 0; i < lvls.length; i++){
         continuelvl.innerHTML = 'Continue';
 
         continuelvl.addEventListener('click', function(e){
+            bossCounter++;
             window.localStorage.setItem('level-description', JSON.stringify(params[i]));
             window.localStorage.setItem('player-info', JSON.stringify(snake));
+            window.localStorage.setItem('boss-counter', JSON.stringify(bossCounter));
             window.open('index.html', '_self');
         });
     });

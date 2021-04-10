@@ -1,9 +1,9 @@
 function getReward(coins, mana){
     floor.enemies--;
-    let coinsScore1 = document.querySelector('.coins-text');
+    let coinsScore1 = document.querySelector('.coins');
     
     let enemiesScore1 = document.querySelector('.enemies-text');
-    enemiesScore1.innerHTML = "Enemies left: "+floor.enemies;
+    enemiesScore1.innerHTML = floor.enemies;
 
 
     let coinsChance = Math.round(Math.random()*(2-1)+1);
@@ -14,8 +14,10 @@ function getReward(coins, mana){
         else{
             snake.coins+=coins
         }
-        coinsScore1.innerHTML = "Coins: "+snake.coins;
+        coinsScore1.innerHTML = snake.coins;
     }
+
+    snake.mana++;
 
     if(snake.mana>=snake.maxMana){
         snake.mana = snake.maxMana;

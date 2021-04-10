@@ -76,20 +76,33 @@ function addNewPotion(){
 
 function createPotion(potionstats){
     let slideList = document.querySelector('.splide__list');
-    
-    slideList.innerHTML+=`<div class="splide__slide id_${potionstats.id}"><img class = "slide__image" src = "${potionstats.img}"><p class = "slide__text">${potionstats.name}</p><p class = "slide__cost">${potionstats.cost}</p></div>`;
 
+	let slideItem = document.createElement('div');
+	slideItem.classList.add('splide__slide');
+	slideItem.classList.add(`id_${potionstats.id}`);
+	slideItem.innerHTML = `
+		<img class = "slide__image" src = "${potionstats.img}">
+		<p class = "slide__text">${potionstats.name}</p>
+		<p class = "slide__cost">${potionstats.cost}</p>
+	`;
+	slideList.appendChild(slideItem);
+    
+    // slideList.innerHTML+=`<div class="splide__slide id_${potionstats.id}">
+	// 	<img class = "slide__image" src = "${potionstats.img}">
+	// 	<p class = "slide__text">${potionstats.name}</p>
+	// 	<p class = "slide__cost">${potionstats.cost}</p>
+	// </div>`;
 
 
 
     let description = document.createElement('div');
+    description.innerHTML = `<p class = "potion-description__text">${potionstats.description}</p>`;
+    description.classList.add(`potion-id__${potionstats.id}`);
+    description.style.visibility = 'hidden';
     document.body.appendChild(description);
 
     let potion = slideList.querySelector(`.id_${potionstats.id}`);
 
-    description.innerHTML = `<p class = "potion-description__text">${potionstats.description}</p>`;
-    description.classList.add(`potion-id__${potionstats.id}`);
-    description.style.visibility = 'hidden';
 
 
     console.log(potion);
@@ -128,7 +141,7 @@ function createPotion(potionstats){
         }
         potionstats.function();
         }
-    }
+}
 
 addNewPotion();
 

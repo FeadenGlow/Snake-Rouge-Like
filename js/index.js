@@ -59,7 +59,8 @@ if(snake == null){
     coins: 0,
     }
 }
-snake.maxMana += maxManamultiplier;
+console
+snake.maxMana += snake.maxManamultiplier;
 
 document.body.appendChild(field);
 field.classList.add('field');
@@ -137,7 +138,6 @@ function createFruit(){
     fruit.classList.add('fruit');
     fruit.innerHTML = '<img src = "/images/fruit.png" class = "fruit-img">'//
 }
-createFruit();
 
 function checker(element){
     if(element.classList.contains('enemy')){
@@ -158,7 +158,7 @@ function checker(element){
 function killcheck(element){
 
     let enemiesScore = document.querySelector('.enemies-text');
-    enemiesScore.innerHTML = "Enemies left: "+floor.enemies;
+    enemiesScore.innerHTML = floor.enemies;
 
     if(element.classList.contains('enemy')){
         enemyArtifact.kills++;
@@ -190,6 +190,8 @@ function killcheck(element){
     else if(element.classList.contains('fruit')){
 
         getReward(0.25, 1);
+
+        element.classList.remove('fruit');
         
         if(floor.enemies <= 0){
             ending();

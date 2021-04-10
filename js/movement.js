@@ -2,6 +2,7 @@ let direction = 'right';
 let xParticle;
 let yParticle;
 let manaScore1 = document.querySelector('.mana-text');
+let coins = document.querySelector('.stats');
 let invEx;
 let switcher = false;
 
@@ -94,13 +95,25 @@ function removeHealth(){
 let steps = false;
 
 function move(){
-    manaScore1.innerHTML = "Mana: " + snake.mana + "/"+snake.maxMana;
+    manaScore1.innerHTML = snake.mana;
+    if(snake.mana == 0){
+        manaScore1.style.visibility = 'hidden';
+    } else{
+        manaScore1.style.visibility = 'visible';
+    }
+    if(snake.coins == 0){
+        coins.style.visibility = 'hidden';
+    } else{
+        coins.style.visibility = 'visible';
+    }
     if(enemyArtifact.kills < enemyArtifact.neededKills){
         window.localStorage.setItem('player-inventory', null);
     }
     if(snakeBody[0].classList.contains('portal')){
         window.open('shop.html', '_self');
     }
+    let encountManaProgress = (snake.mana / snake.maxMana) * 100;
+    setProgress(encountManaProgress);
     
     let snakeCoordinates = [snakeBody[0].getAttribute('posX'),snakeBody[0].getAttribute('posY')];
     snakeBody[0].classList.remove('snakeHead');

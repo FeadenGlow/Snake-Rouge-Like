@@ -233,12 +233,23 @@
     width: 50px;
     border-radius: 5%;
     margin: auto;
+    background-color: rgb(194, 194, 194);
+}
+.map-boss-excell{
+    height: 50px;
+    width: 50px;
+    border-radius: 5%;
+    margin: auto;
 
-    background-color: rgb(170, 170, 170);
+    background-color: rgb(184, 32, 32);
 }
 .map-excell:hover{
     cursor: pointer;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(170, 170, 170);
+}
+.map-boss-excell:hover{
+    cursor: pointer;
+    background-color: rgb(133, 16, 16);
 }
 .player-position{
     height: 50px;

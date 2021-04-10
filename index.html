@@ -18,15 +18,21 @@
 </head>
 <body>
     <div class = 'stats'>
-        <div class ='mana'><p class = 'mana-text'>Mana: 0/10</p></div>
-        <div class ='lvl'><p class = 'lvl-text'>Lvl: 0</p></div>
-        <div class ='coins'><p class = 'coins-text'>Coins: 0</p></div>
+        <img class = 'coins-image' src="/images/coin.png">
+        <p class = 'coins'>0</p>
     </div>
     <div class = 'map-stats'>
-        <div class = 'enemies'><p class = 'enemies-text'>Enemies left: 0</p></div>
+        <div class = 'enemies'><img class = "enemies-image" src="/images/skull.png"><p class = 'enemies-text'>0</p></div>
     </div>
     <img src = "/images/snakeBackground.png" class = "mgi">
+
     <canvas class = 'particle-field' height = '815px', width = '1545px'></canvas>
+    <div class="progress-ring">
+        <p class="mana-text"></p>
+        <svg class = "mana-svg" width = "120" height = "120">
+            <circle class="mana-ring" stroke = "white" stroke-width = "4" cx = "60" cy = "60" r = "52" fill = "transparent"></circle>
+        </svg>
+    </div>
 
     <script src = "/js/index.js"></script>
     <script src="/js/climber.js"></script>
@@ -38,5 +44,7 @@
     <script src="/js/ending.js"></script>
     <script src="/js/level.js"></script>
     <script src="/js/restart.js"></script>
+    <script src="/js/kill.js"></script>
+    <script src="/js/stats.js"></script>
 </body>
 </html>
