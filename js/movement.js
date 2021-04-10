@@ -18,7 +18,7 @@ function removeHealth(){
             if(invEx[i].id == '#1'){
                 if(snake.mana >= 10){
                     snake.mana -= 10;
-                    manaScore1.innerHTML = "Mana: " + snake.mana + "/"+snake.maxMana;
+                    manaScore1.innerHTML = snake.maxMana;
 
 
                     let canvas = document.querySelector('.particle-field');
@@ -117,7 +117,7 @@ function move(){
     
     let snakeCoordinates = [snakeBody[0].getAttribute('posX'),snakeBody[0].getAttribute('posY')];
     snakeBody[0].classList.remove('snakeHead');
-    snakeBody[0].innerHTML = '<img src = "/images/snakeBody.png" class = "gmi">';
+    snakeBody[0].innerHTML = '<img src = "./images/snakeBody.png" class = "gmi">';
     snakeBody[snakeBody.length-1].classList.remove('snakeBody');
     snakeBody[snakeBody.length-1].innerHTML = '';
     snakeBody.pop();
@@ -149,7 +149,7 @@ function move(){
     }
 
     snakeBody[0].classList.add('snakeHead');
-    snakeBody[0].innerHTML = '<img src = "/images/snakeHead.png" class = "img">'
+    snakeBody[0].innerHTML = '<img src = "./images/snakeHead.png" class = "img">'
 
     if(direction == 'up'){
         document.querySelector('.snakeHead').style.rotate = "0deg";
@@ -170,7 +170,7 @@ function move(){
 
 //
     let enemiesScore = document.querySelector('.enemies-text');
-    enemiesScore.innerHTML = "Enemies left: "+floor.enemies;
+    enemiesScore.innerHTML = floor.enemies;
 
     killcheck(snakeBody[0]);
 

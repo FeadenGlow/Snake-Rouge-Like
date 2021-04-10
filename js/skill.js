@@ -36,7 +36,7 @@ let switcherblastshoot = true;
 switch(selectedSkillGet){
     case '#1':
 
-        skillImage.innerHTML = '<img src = "/images/skills/splash.png" class = "skill-image">';
+        skillImage.innerHTML = '<img src = "./images/skills/splash.png" class = "skill-image">';
 
         function createBlast(){
             switcherblast = true;
@@ -85,7 +85,7 @@ switch(selectedSkillGet){
 
             blast = document.querySelector('[posX = "' + (+parseInt(snakeBody[0].getAttribute('posX'))+counterBlastX) + '"][posY = "' + (+parseInt(snakeBody[0].getAttribute('posY'))+counterBlastY) +'"]');
             blast.classList.add('blast');
-            blast.innerHTML = '<img src = "/images/skills/skill-cast/blast.png" class = "blast-image">';
+            blast.innerHTML = '<img src = "./images/skills/skill-cast/blast.png" class = "blast-image">';
         }
         function moveBlast(){  
             if(blast == null){switcherblast = false; return}
@@ -122,7 +122,7 @@ switch(selectedSkillGet){
 
             blast = document.querySelector('[posX = "' + (+parseInt(blast.getAttribute('posX'))+blastX) + '"][posY = "' + (+parseInt(blast.getAttribute('posY'))+blastY) +'"]');
             blast.classList.add('blast');
-            blast.innerHTML = '<img src = "/images/skills/skill-cast/blast.png" class = "blast-image">';
+            blast.innerHTML = '<img src = "./images/skills/skill-cast/blast.png" class = "blast-image">';
 
             switch(blastDirection){
                 case 'right':

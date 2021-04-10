@@ -19,7 +19,7 @@ class Walker{
                 walker  = document.querySelector('[posX = "'+walkercoords[0]+'"][posY = "'+walkercoords[1]+'"]');  
             }
             walker.classList.add('walker');
-            walker.innerHTML = '<img src = "/images/enemies/walker.png" class = "walker-img">';
+            walker.innerHTML = '<img src = "./images/enemies/walker.png" class = "walker-img">';
         }
 
         createWalker();
@@ -69,7 +69,7 @@ class Walker{
             walker.style.rotate = '0deg';
             walker = document.querySelector('[posX = "'+walkerPosX+'"][posY = "'+walkerPosY+'"]');
             walker.classList.add('walker');
-            walker.innerHTML = '<img src = "/images/enemies/walker.png" class = "walker-img">';
+            walker.innerHTML = '<img src = "./images/enemies/walker.png" class = "walker-img">';
 
             if(walker.classList.contains('snakeBody')){
                 walker.innerHTML = '';

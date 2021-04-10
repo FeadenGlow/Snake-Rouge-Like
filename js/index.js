@@ -16,7 +16,7 @@ let enemyArtifact = {
 }
 
 let skills = [{
-    img: '/skills/splash.png',
+    img: './skills/splash.png',
     name: 'Splash',
     id: '#1',
     rarity: 'default',
@@ -117,10 +117,10 @@ if(snake.hp < 3){
 }
 for(let i = 0; i < snakeBody.length; i++){
     snakeBody[i].classList.add('snakeBody');
-    snakeBody[i].innerHTML = '<img src = "/images/snakeBody.png" class = "gmi">'//
+    snakeBody[i].innerHTML = '<img src = "./images/snakeBody.png" class = "gmi">'//
 }
 snakeBody[0].classList.add('snakeHead');
-snakeBody[0].innerHTML = '<img src = "/images/snakeHead.png" class = "img">'//
+snakeBody[0].innerHTML = '<img src = "./images/snakeHead.png" class = "img">'//
 let fruit;
 function createFruit(){
     function generateFruit() {
@@ -136,22 +136,22 @@ function createFruit(){
         fruit  = document.querySelector('[posX = "'+fruitcoords[0]+'"][posY = "'+fruitcoords[1]+'"]');  
     }
     fruit.classList.add('fruit');
-    fruit.innerHTML = '<img src = "/images/fruit.png" class = "fruit-img">'//
+    fruit.innerHTML = '<img src = "./images/fruit.png" class = "fruit-img">'//
 }
 
 function checker(element){
     if(element.classList.contains('enemy')){
         element.style.rotate = '0deg'
-        element.innerHTML = '<img src = "/images/enemies/enemy.png" class = "enemy-img">'
+        element.innerHTML = '<img src = "./images/enemies/enemy.png" class = "enemy-img">'
     }
     else if(element.classList.contains('fruit')){
-        element.innerHTML = '<img src = "/images/fruit.png" class = "fruit-img">'
+        element.innerHTML = '<img src = "./images/fruit.png" class = "fruit-img">'
     }
     else if(element.classList.contains('climber')){
-        element.innerHTML = '<img src = "/images/enemies/climber.png" class = "climber-img">'
+        element.innerHTML = '<img src = "./images/enemies/climber.png" class = "climber-img">'
     }
     else if(element.classList.contains('walker')){
-        element.innerHTML = '<img src = "/images/enemies/walker.png" class = "walker-img">'
+        element.innerHTML = '<img src = "./images/enemies/walker.png" class = "walker-img">'
     }
 }
 
@@ -169,7 +169,7 @@ function killcheck(element){
             if(invEx != null){
                 counter = invEx.length-1
             }
-            inventoryExchange[counter].img = '/artifacts/artifact.png';
+            inventoryExchange[counter].img = './artifacts/artifact.png';
             inventoryExchange[counter].name = 'Mana Shield';
             inventoryExchange[counter].id = '#1';
             inventoryExchange[counter].type = 'artifact';

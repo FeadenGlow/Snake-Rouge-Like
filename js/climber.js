@@ -34,7 +34,7 @@ class Climber{
             yclimber = climbercoords[1];
         
             climber.classList.add('climber');
-            climber.innerHTML = '<img src = "/images/enemies/climber.png" class = "climber-img">'
+            climber.innerHTML = '<img src = "./images/enemies/climber.png" class = "climber-img">'
         }
         createClimber();
 
@@ -81,7 +81,7 @@ class Climber{
 
             climber = document.querySelector('[posX = "'+(+xclimber+xclimberCounter)+'"][posY = "'+(+yclimber+yclimberCounter)+'"]');
             climber.classList.add('climber');
-            climber.innerHTML = '<img src = "/images/enemies/climber.png" class = "climber-img">'
+            climber.innerHTML = '<img src = "./images/enemies/climber.png" class = "climber-img">'
 
             if(climber.classList.contains('snakeBody')){
                 removeHealth();

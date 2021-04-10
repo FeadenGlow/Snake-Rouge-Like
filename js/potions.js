@@ -22,7 +22,7 @@ function addNewPotion(){
             case 0:
                 potionscount = {
                     id: 0,
-                    img: "/images/potions/pot-of-swiftness.png",
+                    img: "./images/potions/pot-of-swiftness.png",
                     name: 'Potion Of Swiftness',
                     description: 'increase speed for 10% on 1 level',
                     cost: '1 coins',
@@ -35,7 +35,7 @@ function addNewPotion(){
             case 1:
                 potionscount = {
                     id: 1,
-                    img: "/images/potions/pot-of-coins.png",
+                    img: "./images/potions/pot-of-coins.png",
                     name: 'Potion Of Coins',
                     description: 'increase recieved coins for 15% on 1 level',
                     cost: '3 coins',
@@ -48,7 +48,7 @@ function addNewPotion(){
             case 2:
                 potionscount = {
                     id: 2,
-                    img: "/images/potions/pot-of-mana.png",
+                    img: "./images/potions/pot-of-mana.png",
                     name: 'Potion Of Max Mana',
                     description: '+5 max mana on 1 level',
                     cost: '5 coins',

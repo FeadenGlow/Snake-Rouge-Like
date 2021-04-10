@@ -17,7 +17,7 @@ class Enemy{
             }
 
             enemy.classList.add('enemy');
-            enemy.innerHTML = '<img src = "/images/enemies/enemy.png" class = "enemy-img">'//
+            enemy.innerHTML = '<img src = "./images/enemies/enemy.png" class = "enemy-img">'//
         }
         createEnemy();
 
@@ -44,7 +44,7 @@ class Enemy{
             spit = document.querySelector('[posX = "'+parseInt(enemycoords[0]-1) +'"][posY = "'+enemycoords[1]+'"]');
             spitcoords = [parseInt(enemycoords[0]-1), enemycoords[1]];
             spit.classList.add('spit');
-            spit.innerHTML = '<img src = "/images/shoot.png" class = "shoot-img">';
+            spit.innerHTML = '<img src = "./images/shoot.png" class = "shoot-img">';
 
             headdirX = snakeBody[0].getAttribute('posX');
             headdirY = snakeBody[0].getAttribute('posY');
@@ -135,7 +135,7 @@ class Enemy{
 
                 spit = document.querySelector('[posX = "' + xspit + '"][posY = "' + yspit + '"]');
                 spit.classList.add('spit');
-                spit.innerHTML = '<img src = "/images/shoot.png" class = "shoot-img">';
+                spit.innerHTML = '<img src = "./images/shoot.png" class = "shoot-img">';
             } else{
                 createNewSpit();
                 return;

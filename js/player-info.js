@@ -52,7 +52,7 @@ if(skillsExchange != null){
             window.localStorage.setItem('selected-skill', JSON.stringify(skillsExchange[i].id));
 
             let img = document.createElement('img');
-            img.src = '/images/'+ skillsExchange[i].img
+            img.src = './images/'+ skillsExchange[i].img
             img.classList.add('skill-image-description');
 
             let name = document.createElement('p');
@@ -126,7 +126,7 @@ if(inventoryExchange != null){
         inventoryExcel.appendChild(inventoryText);
         inventoryText.classList.add('inventory-text-cell');
 
-        inventoryExcelCell.innerHTML = '<img src = "/images/'+ inventoryExchange[i].img  +'" class = "artifact-image">';
+        inventoryExcelCell.innerHTML = '<img src = "./images/'+ inventoryExchange[i].img  +'" class = "artifact-image">';
         inventoryText.innerHTML = inventoryExchange[i].name;
 
         inventoryExcelCell.addEventListener('click', function(e){
@@ -134,7 +134,7 @@ if(inventoryExchange != null){
             inventorySide2.innerHTML = ''
 
             let img = document.createElement('img');
-            img.src = '/images/'+ inventoryExchange[i].img
+            img.src = './images/'+ inventoryExchange[i].img
             img.classList.add('artifact-image-description');
 
             let name = document.createElement('p');
