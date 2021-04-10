@@ -16,7 +16,7 @@ let enemyArtifact = {
 }
 
 let skills = [{
-    img: './skills/splash.png',
+    img: 'skills/splash.png',
     name: 'Splash',
     id: '#1',
     rarity: 'default',
@@ -169,7 +169,7 @@ function killcheck(element){
             if(invEx != null){
                 counter = invEx.length-1
             }
-            inventoryExchange[counter].img = './artifacts/artifact.png';
+            inventoryExchange[counter].img = '/artifacts/artifact.png';
             inventoryExchange[counter].name = 'Mana Shield';
             inventoryExchange[counter].id = '#1';
             inventoryExchange[counter].type = 'artifact';
@@ -205,7 +205,7 @@ function killcheck(element){
 function blastkillcheck(element){
     
     let enemiesScore = document.querySelector('.enemies-text');
-    enemiesScore.innerHTML = "Enemies left: "+floor.enemies;
+    enemiesScore.innerHTML = floor.enemies;
 
     if(element.classList.contains('walker')){
 

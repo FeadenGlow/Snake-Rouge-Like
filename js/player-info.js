@@ -42,7 +42,7 @@ if(skillsExchange != null){
         skillsText.classList.add('skills-text-cell');
 
 
-        skillsExcelCell.innerHTML = '<img src = "/images/'+ skillsExchange[i].img  +'" class = "skills-image">';
+        skillsExcelCell.innerHTML = '<img src = "./images/'+ skillsExchange[i].img  +'" class = "skills-image">';
         skillsText.innerHTML = skillsExchange[i].name;
 
         skillsExcelCell.addEventListener('click', function(e){
