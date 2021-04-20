@@ -48,7 +48,7 @@ function removeHealth(){
                         }
                         let ball = []
                     function raf() {
-                        ball.push(new Ball(xParticle, yParticle, Math.round(Math.random()*(10-(-10))+(-10)), Math.round(Math.random()*(10-(-10))+(-10)), Math.round(Math.random()*(5-2)+2)))
+                        ball.push(new Ball(xParticle, yParticle, Math.round(Math.random()*(5-(-5))+(-5)), Math.round(Math.random()*(5-(-5))+(-5)), Math.round(Math.random()*(5-2)+2)))
                         ctx.clearRect(0,0, canvas.width, canvas.height);
                         if(ball.length > 10){
                             ball.pop();
@@ -77,7 +77,35 @@ function removeHealth(){
     }
     if(snakeBody[snakeBody.length-1].classList.contains('snakeHead')){
         clearInterval(interval);
-        createMessage('Game Over');
+
+        let restart = document.createElement('div');
+
+        restart.classList.add('restart__menu');
+        document.body.appendChild(restart);
+
+        let restartButton = document.createElement('div');
+        let returnButton = document.createElement('div');
+
+        restartButton.classList.add('restart__button');
+        returnButton.classList.add('restart-return__button');
+
+        restartButton.innerHTML = 'restart';
+        returnButton.innerHTML = 'main menu';
+        
+        restartButton.onclick = function(){
+            document.location.reload();
+        }
+        returnButton.onclick = function(){
+            window.open('main_menu.html', '_self');
+        }
+
+
+        restart.appendChild(restartButton);
+        restart.appendChild(returnButton);
+
+
+
+        window.localStorage.setItem('boss-counter', JSON.stringify(0));
         clearEnemies();
         restartSnake();
         return;
@@ -92,9 +120,140 @@ function removeHealth(){
     },1000)
 }
 
+function wall(){
+    let chance;
+    for(let i = 0; i < excel.length; i++){
+        if(parseInt(excel[i].getAttribute('posX')) == (parseInt(snakeBody[0].getAttribute('posX')) + 1) && parseInt(excel[i].getAttribute('posY')) == parseInt(snakeBody[0].getAttribute('posY'))){
+            if(direction == 'right'){
+                if(excel[i].classList.contains('wall')){
+                    chance = Math.round(Math.random() * (2 - 1) + 1);
+                    switch(chance){
+                        case 1:
+                            for(let j = 0; j < excel.length; j++){
+                                if(parseInt(excel[j].getAttribute('posY')) == (parseInt(snakeBody[0].getAttribute('posY')) - 1) && parseInt(excel[j].getAttribute('posX')) == parseInt(snakeBody[0].getAttribute('posX'))){
+                                    if(excel[j].classList.contains('wall')){
+                                        direction = 'up';
+                                        return;
+                                    }
+                                }
+                            }
+                            direction = 'down';
+                        break;
+                        case 2:
+                            for(let j = 0; j < excel.length; j++){
+                                if(parseInt(excel[j].getAttribute('posY')) == (parseInt(snakeBody[0].getAttribute('posY')) + 1) && parseInt(excel[j].getAttribute('posX')) == parseInt(snakeBody[0].getAttribute('posX'))){
+                                    if(excel[j].classList.contains('wall')){
+                                        direction = 'down';
+                                        return;
+                                    }
+                                }
+                            }
+                            direction = 'up';
+                        break;
+                    }
+                }
+            }
+        }
+        if(parseInt(excel[i].getAttribute('posX')) == (parseInt(snakeBody[0].getAttribute('posX')) - 1) && parseInt(excel[i].getAttribute('posY')) == parseInt(snakeBody[0].getAttribute('posY'))){
+            if(direction == 'left'){
+                if(excel[i].classList.contains('wall')){
+                    chance = Math.round(Math.random() * (2 - 1) + 1);
+                    switch(chance){
+                        case 1:
+                            for(let j = 0; j < excel.length; j++){
+                                if(parseInt(excel[j].getAttribute('posY')) == (parseInt(snakeBody[0].getAttribute('posY')) - 1) && parseInt(excel[j].getAttribute('posX')) == parseInt(snakeBody[0].getAttribute('posX'))){
+                                    if(excel[j].classList.contains('wall')){
+                                        direction = 'up';
+                                        return;
+                                    }
+                                }
+                            }
+                            direction = 'down';
+                        break;
+                        case 2:
+                            for(let j = 0; j < excel.length; j++){
+                                if(parseInt(excel[j].getAttribute('posY')) == (parseInt(snakeBody[0].getAttribute('posY')) + 1) && parseInt(excel[j].getAttribute('posX')) == parseInt(snakeBody[0].getAttribute('posX'))){
+                                    if(excel[j].classList.contains('wall')){
+                                        direction = 'down';
+                                        return;
+                                    }
+                                }
+                            }
+                            direction = 'up';
+                        break;
+                    }
+                }
+            }
+        }
+        if(parseInt(excel[i].getAttribute('posY')) == (parseInt(snakeBody[0].getAttribute('posY')) + 1) && parseInt(excel[i].getAttribute('posX')) == parseInt(snakeBody[0].getAttribute('posX'))){
+            if(direction == 'up'){
+                if(excel[i].classList.contains('wall')){
+                    chance = Math.round(Math.random() * (2 - 1) + 1);
+                    switch(chance){
+                        case 1:
+                            for(let j = 0; j < excel.length; j++){
+                                if(parseInt(excel[j].getAttribute('posX')) == (parseInt(snakeBody[0].getAttribute('posX')) + 1) && parseInt(excel[j].getAttribute('posY')) == parseInt(snakeBody[0].getAttribute('posY'))){
+                                    if(excel[j].classList.contains('wall')){
+                                        direction = 'left';
+                                        return;
+                                    }
+                                }
+                            }
+                            direction = 'right';
+                        break;
+                        case 2:
+                            for(let j = 0; j < excel.length; j++){
+                                if(parseInt(excel[j].getAttribute('posX')) == (parseInt(snakeBody[0].getAttribute('posX')) - 1) && parseInt(excel[j].getAttribute('posY')) == parseInt(snakeBody[0].getAttribute('posY'))){
+                                    if(excel[j].classList.contains('wall')){
+                                        direction = 'right';
+                                        return;
+                                    }
+                                }
+                            }
+                            direction = 'left';
+                        break;
+                    }
+                }
+            }
+        }
+        if(parseInt(excel[i].getAttribute('posY')) == (parseInt(snakeBody[0].getAttribute('posY')) - 1) && parseInt(excel[i].getAttribute('posX')) == parseInt(snakeBody[0].getAttribute('posX'))){
+            if(direction == 'down'){
+                if(excel[i].classList.contains('wall')){
+                    chance = Math.round(Math.random() * (2 - 1) + 1);
+                    switch(chance){
+                        case 1:
+                            for(let j = 0; j < excel.length; j++){
+                                if(parseInt(excel[j].getAttribute('posX')) == (parseInt(snakeBody[0].getAttribute('posX')) + 1) && parseInt(excel[j].getAttribute('posY')) == parseInt(snakeBody[0].getAttribute('posY'))){
+                                    if(excel[j].classList.contains('wall')){
+                                        direction = 'left';
+                                        return;
+                                    }
+                                }
+                            }
+                            direction = 'right';
+                        break;
+                        case 2:
+                            for(let j = 0; j < excel.length; j++){
+                                if(parseInt(excel[j].getAttribute('posX')) == (parseInt(snakeBody[0].getAttribute('posX')) - 1) && parseInt(excel[j].getAttribute('posY')) == parseInt(snakeBody[0].getAttribute('posY'))){
+                                    if(excel[j].classList.contains('wall')){
+                                        direction = 'right';
+                                        return;
+                                    }
+                                }
+                            }
+                            direction = 'left';
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
 let steps = false;
 
 function move(){
+    wall();
     manaScore1.innerHTML = snake.mana;
     if(snake.mana == 0){
         manaScore1.style.visibility = 'hidden';
@@ -107,7 +266,9 @@ function move(){
         coins.style.visibility = 'visible';
     }
     if(enemyArtifact.kills < enemyArtifact.neededKills){
-        window.localStorage.setItem('player-inventory', null);
+        if(JSON.parse(window.localStorage.getItem('player-inventory')) == null){
+            window.localStorage.setItem('player-inventory', null);
+        }
     }
     if(snakeBody[0].classList.contains('portal')){
         window.open('shop.html', '_self');
@@ -120,31 +281,72 @@ function move(){
     snakeBody[0].innerHTML = '<img src = "./images/snakeBody.png" class = "gmi">';
     snakeBody[snakeBody.length-1].classList.remove('snakeBody');
     snakeBody[snakeBody.length-1].innerHTML = '';
+    snakeBody[snakeBody.length-1].style.rotate = ''
     snakeBody.pop();
 
     if (direction == 'right') {  
         if(snakeCoordinates[0] < 29) {
             snakeBody.unshift(document.querySelector('[posX = "' + (+snakeCoordinates[0] + 1) + '"][posY = "' + snakeCoordinates[1] + '"]'));
         } else {
-            snakeBody.unshift(document.querySelector('[posX = "1"][posY = "' + snakeCoordinates[1] + '"]'));
+            if(bosschecker != null){
+                console.log('ok')
+                if(bosschecker.difficulty == 'boss'){
+                    snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "' + (+snakeCoordinates[1]) + '"]'));
+                }
+                else{
+                    snakeBody.unshift(document.querySelector('[posX = "1"][posY = "' + snakeCoordinates[1] + '"]'));
+                }
+            }
+            else{
+                snakeBody.unshift(document.querySelector('[posX = "1"][posY = "' + snakeCoordinates[1] + '"]'));
+            }
         }
     } else if (direction == 'left') { 
         if(snakeCoordinates[0] > 1) {
             snakeBody.unshift(document.querySelector('[posX = "' + (+snakeCoordinates[0] - 1) + '"][posY = "' + snakeCoordinates[1] + '"]'));
         } else {
+            if(bosschecker != null){
+                if(bosschecker.difficulty == 'boss'){
+                    snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "' + (+snakeCoordinates[1]) + '"]'));
+                }
+                else{
+                    snakeBody.unshift(document.querySelector('[posX = "29"][posY = "' + snakeCoordinates[1] + '"]')); 
+                }
+            }
+            else{
             snakeBody.unshift(document.querySelector('[posX = "29"][posY = "' + snakeCoordinates[1] + '"]')); 
+            }
         }
     } else if (direction == 'up') {
         if(snakeCoordinates[1] < 16) {
             snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "' + (+snakeCoordinates[1]+1) + '"]')); 
         } else {
-            snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "1"]')); 
+            if(bosschecker != null){
+                if(bosschecker.difficulty == 'boss'){
+                    snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "' + (+snakeCoordinates[1]) + '"]'));
+                }
+                else{
+                    snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "1"]'));
+                } 
+            }
+            else{
+            snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "1"]'));
+            } 
         }
     } else if (direction == 'down') {  
         if(snakeCoordinates[1] > 1) {
             snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "' + (+snakeCoordinates[1]-1) + '"]'));
         } else {
+            if(bosschecker != null){
+                if(bosschecker.difficulty == 'boss'){
+                    snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "' + (+snakeCoordinates[1]) + '"]'));
+                }
+                else{
+                    snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "16"]'));
+                }  
+            }else{
             snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "16"]'));
+            }
         }
     }
 
@@ -152,16 +354,16 @@ function move(){
     snakeBody[0].innerHTML = '<img src = "./images/snakeHead.png" class = "img">'
 
     if(direction == 'up'){
-        document.querySelector('.snakeHead').style.rotate = "0deg";
+        snakeBody[0].style.rotate = "0deg";
     }
     else if(direction == 'down'){
-        document.querySelector('.snakeHead').style.rotate = "-180deg";
+        snakeBody[0].style.rotate = "-180deg";
     }
     else if(direction == 'right'){
-        document.querySelector('.snakeHead').style.rotate = "+90deg";
+        snakeBody[0].style.rotate = "+90deg";
     }
     else if(direction == 'left'){
-        document.querySelector('.snakeHead').style.rotate = "-90deg";
+        snakeBody[0].style.rotate = "-90deg";
     }
 
     for(let i = 0; i<snakeBody.length; i++){
@@ -170,6 +372,11 @@ function move(){
 
 //
     let enemiesScore = document.querySelector('.enemies-text');
+    if(bosschecker != null){
+        if(bosschecker.difficulty == 'boss'){
+            floor.enemies = 1;
+        }
+    }
     enemiesScore.innerHTML = floor.enemies;
 
     killcheck(snakeBody[0]);
@@ -177,12 +384,18 @@ function move(){
     steps = true;
 // 
 
+
 }
-let speed = snake.speed+snake.speedmultiplier;
-console.log(speed);
-let interval = setInterval(move, speed);
+let interval;
+let intervalchecker = false;
 
 window.addEventListener('keydown', function(e){
+    if(intervalchecker == false){
+        let speed = snake.speed+snake.speedmultiplier;
+        intervalchecker = true;
+        createLevel();
+        interval = setInterval(move, speed);
+    }
     if(steps == true){
         if(e.keyCode == 37 && direction!='right'){
             direction = 'left';

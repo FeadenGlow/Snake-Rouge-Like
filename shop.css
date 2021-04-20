@@ -13,6 +13,20 @@
 .stats-shop{
     position:absolute;
 }
+.coins-shop-text{
+    position: absolute;
+    left: 40px;
+    margin: auto;
+    top: 4px;
+}
+.mana-image{
+    height: 32px;
+    width: 32px;
+}
+.coins-image-shop{
+    width: 15px;
+    height: 15px;
+}
 .skills, .shop, .inventory{
     position: absolute;
     left: 250px;
@@ -290,6 +304,9 @@
 .map-selected{
     background-color: rgba(168, 252, 44, 0.8);
 }
+.map-selected:hover{
+    background-color: rgba(96, 143, 25, 0.8);
+}
 .continue{
     position: absolute;
     top: 900px;
@@ -420,4 +437,7 @@
     top: 200px;
     left: auto;
     right: auto;
+}
+.inventory__skill-selected{
+    border: 2px solid chartreuse;
 }

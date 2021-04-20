@@ -47,9 +47,16 @@ if(skillsExchange != null){
 
         skillsExcelCell.addEventListener('click', function(e){
 
+            let skillsExcells = document.getElementsByClassName('skills-excel');
+
+            for(let j = 0; j < skillsExcells.length; j++){
+                skillsExcells[j].classList.remove('inventory__skill-selected');
+            }
+
             skillsSide1.innerHTML = ''
 
             window.localStorage.setItem('selected-skill', JSON.stringify(skillsExchange[i].id));
+            skillsExcel.classList.add('inventory__skill-selected');
 
             let img = document.createElement('img');
             img.src = './images/'+ skillsExchange[i].img
@@ -216,9 +223,9 @@ shop.appendChild(shopHp);
 shop.appendChild(slidervis);
 shop.appendChild(activepotions);
 
-shopCoins.innerHTML = `Coins: ${snake.coins}`;
-shopMana.innerHTML = `Mana: ${snake.mana}`;
-shopHp.innerHTML = `HP: ${snake.hp}`;
+shopCoins.innerHTML = `<img class = "coins-image" src = "./images/coin.png"><p class = "coins-shop-text">${snake.coins}</p>`;
+shopMana.innerHTML = `<img class = "mana-image" src = "./images/mana.webp"><p class = "coins-shop-text">${snake.mana}</p>`;
+shopHp.innerHTML = `<img class = "coins-image" src = "./images/snakeHead.png"><p class = "coins-shop-text">${snake.hp}</p>`
 
 
 shopButton.addEventListener('click', function(){

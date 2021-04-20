@@ -25,19 +25,37 @@ let skills = [{
     damage: 5,
 }]
 
-let selectedSkill = '#1'; 
-
-window.localStorage.setItem('player-skills', JSON.stringify(skills));
-window.localStorage.setItem('selected-skill', JSON.stringify(selectedSkill));
-
-
 let floor = {
+    biome: 'DarkDungeon',
     enemies: 10,
 }
+
+let bosschecker = JSON.parse(window.localStorage.getItem('level-description'));
+if(bosschecker != null){
+    if(bosschecker.difficulty == 'boss'){
+        let bossname;
+        switch(floor.biome){
+            case 'DarkDungeon':
+                bossname = 'Quest Master';
+        }
+        window.localStorage.setItem('boss-name', JSON.stringify(bossname));
+        import("./boss.js");
+    }
+}
+if(JSON.parse(window.localStorage.getItem('player-info')) == null){
+    let selectedSkill = '#1';
+    window.localStorage.setItem('selected-skill', JSON.stringify(selectedSkill));
+}
+
+window.localStorage.setItem('player-skills', JSON.stringify(skills));
+createMessage('Press any key to start');
+
+
 let snake = JSON.parse(window.localStorage.getItem('player-info'));
 if(snake == null){
     snake = {
 
+    spawnRange: 29,
     mana: 0,
     maxMana: 10,
     maxManamultiplier: 0,
@@ -99,9 +117,15 @@ for(let i = 0; i<excel.length; i++){
     x++;
 }
 
-
 function generateSnake() {
-    let posX = Math.round(Math.random() * (29 - 3) + 3);
+    if(bosschecker != null){
+        if(bosschecker.difficulty == 'boss'){
+            snake.spawnRange = 5;
+        }
+    }else{
+        snake.spawnRange = 29;
+    }
+    let posX = Math.round(Math.random() * (snake.spawnRange - 3) + 3);
     let posY = Math.round(Math.random() * (16 - 1) + 1);
     return[posX, posY];
 }

@@ -4,6 +4,10 @@ let climberChance;
 let enemyChance;
 let walkerChance;
 
+let walker = [];
+let enemy = [];
+let climber = [];
+
 function createLevel(){
     if(lvlinfo == null){
         climberChance = 1;
@@ -22,10 +26,6 @@ function createLevel(){
         createFruit();
     }
     
-    let walker = [];
-    let enemy = [];
-    let climber = [];
-    
     
     for(let i = 0; i < enemyChance; i++){
         enemy[i] = new Enemy;
@@ -38,5 +38,3 @@ function createLevel(){
         walker[i] = new Walker;
     }
 }
-
-createLevel();
